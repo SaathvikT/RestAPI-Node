@@ -1,0 +1,14 @@
+#head{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: #3b3d42;
+    color:ivory
+}
+
+#contact{
+  align-items: baseline;
+  display: flex;
+  padding-left: 400px;
+  padding-top: 20px
+}

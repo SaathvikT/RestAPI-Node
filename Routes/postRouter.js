@@ -6,23 +6,26 @@ function routes(SetOfPosts) {
   // Displays set of posts or post depending on the query parameter.
   postRouter.route('/posts')
     .post((req, res) => {
-      const deployPost = new SetOfPosts(req.body);
+      const deployPost = new SetOfPosts({
+        title: req.body.title,
+        body: req.body.body
+      });
       deployPost.save();
       return res.status(201).json(deployPost);
     })
     .get((req, res) => {
-      SetOfPosts.find(req.query, (err, post) => {
+      SetOfPosts.findById(req.query, (err, post) => {
         if (err) {
-          return res.send(err);
+          return res.sendStatus(404);
         }
         return res.json(post);
       });
     });
 
   // Delete a post based upon its id.
-  postRouter.route('/posts/:id')
-    .delete((req, res) => {
-      SetOfPosts.findByIdAndDelete(req.params.id, (err) => {
+  postRouter.route('/posts/delete')
+    .get((req, res) => {
+      SetOfPosts.findByIdAndDelete(req.query, (err) => {
         if (err) {
           return res.json({ success: false, message: err });
         }

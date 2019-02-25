@@ -1,0 +1,76 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Rest Api With Forms</title>
+<style>
+    #head{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        background-color: #3b3d42;
+        color:ivory
+    }
+  
+    #contact{
+      align-items: baseline;
+      display: flex;
+      padding-top: 20px
+    }
+  </style>
+</head>
+<body>
+<header id="head">
+   <h1>REST Api With Node, Express and MongoDB</h1>
+</header>
+<div id="contact" style="padding-left: 400px">
+    <h3>Get Post With Id</h3>
+    <form action="/api/posts" method="GET">
+        <fieldset>
+            <label for="_id">Id:</label>
+            <input type="text" id="id" name="_id" placeholder="Enter Id for Post" />
+            <input type="submit" value="Get Post" />
+        </fieldset>
+    </form>
+</div>
+<div id="contact" style="padding-left: 375px">
+    <h3>Delete Post With Id</h3>
+    <form action="/api/posts/delete" method="GET">
+        <fieldset>
+            <label for="_id">Id:</label>
+            <input type="text" id="id" name="_id" placeholder="Enter Id for Post" />
+            <input type="submit" value="Delete Post" />
+        </fieldset>
+    </form>
+</div>
+<div id="contact" style="padding-left: 300px">
+        <h3>Create Post</h3>
+        <form action="/api/posts" method="POST">
+            <fieldset>
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" placeholder="Enter a title" />
+                <label for="body">Body:</label>
+                <input type="text" id="body" name="body" placeholder="Enter body" />
+                <input type="submit" value="Create Post" />
+            </fieldset>
+        </form>
+</div>
+<div id="contact" style="padding-left: 100px; flex-flow: column">
+    <h3 style="padding-left:500px">Update Comment</h3>
+    <form action="/api/comments" method="POST">
+        <fieldset>
+            <label for="_id">Id:</label>
+            <input type="text" id="id" name="_id" placeholder="Enter Id" />
+            <label for="title">postId:</label>
+            <input type="text" id="postId" name="title" placeholder="Enter a postId" />
+            <label for="body">name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter name" />
+            <label for="body">email:</label>
+            <input type="text" id="email" name="email" placeholder="Enter email" />
+            <label for="body">body:</label>
+            <input type="text" id="body" name="body" placeholder="Enter body" />
+            <input type="submit" value="Update" />
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>

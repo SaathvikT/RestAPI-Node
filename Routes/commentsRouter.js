@@ -1,4 +1,5 @@
 /* eslint-disable no-param-reassign */
+/* eslint-disable no-underscore-dangle */
 const express = require('express');
 
 // Get comments based  on postId passed as parameter.
@@ -13,18 +14,18 @@ function routes(setOfComments) {
         return res.json(comment);
       });
     });
-  commentsRouter.route('/comments/:id')
-    .put((req, res) => {
-      setOfComments.findById(req.params.id, (err, comment) => {
+  commentsRouter.route('/comments')
+    .post((req, res) => {
+      setOfComments.findById(req.body._id, (err, comment) => {
         if (err) {
           return res.send(err);
         }
-        comment.postId = req.body.postId;
+        comment.postId = req.body.title;
         comment.name = req.body.name;
         comment.email = req.body.email;
         comment.body = req.body.body;
         comment.save();
-        return res.json(comment);
+        return res.json({ message: 'success' });
       });
     });
   return commentsRouter;

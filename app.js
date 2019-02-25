@@ -14,11 +14,13 @@ const postRouter = require('./routes/postRouter')(SetOfPosts);
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
 app.use('/api', postRouter, commentsRouter);
 
+
 app.get('/', (req, res) => {
-  res.send('Welcome');
+  res.sendFile('./html/index.html', { root: __dirname });
 });
 
 app.listen(port, () => {
